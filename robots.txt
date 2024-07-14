@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /secret-lab/
+Disallow: /doomsday-device/
+Disallow: /robots-only/
+
+# Hello robots. I see you. I know you're here. Enjoy your stay, but please stay out of the secret lab.
+# P.S. The doomsday device is totally a myth. Definitely not in /doomsday-device/.
