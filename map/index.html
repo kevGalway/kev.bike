@@ -6,6 +6,13 @@
     <title>kev.bike</title>
     <link rel="stylesheet" href="../styles.css">
     <script src="../scripts.js" defer></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeaAVRtBO-Q0AzlmgQun9iO7u6jlNtgjw&callback=initMap" async defer></script>
 </head>
 <body>
 <nav>
@@ -29,7 +36,44 @@
 <main>
     <section>
         <p>A map should be here. If it isn't, I haven't got around to it yet... Or it is broken.</p>
+        <p>Hoping to update this map once a day for big picture route. For more detailed daily GPX tracks, see the journal.</p>
+    </section>
+
+    <hr>
+
+    <section>
+        <div id="map"></div>
     </section>
 </main>
+
+<script>
+    let map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 40.7749, lng: -122.4194 },
+            zoom: 5
+        });
+
+        // Update daily with a coordinate.
+        let routeCoordinates = [
+            { lat: 47.4544332938389, lng: -122.29434996808499 },
+        ];
+
+        const bikeIcon = {
+            url: 'https://img.icons8.com/ios-filled/50/0000FF/bicycle.png',
+            scaledSize: new google.maps.Size(40, 40),
+        };
+
+        routeCoordinates.forEach(function (point) {
+            new google.maps.Marker({
+                position: point,
+                map: map,
+                icon: bikeIcon
+            });
+        });
+    }
+</script>
+
 </body>
 </html>
